@@ -16,14 +16,14 @@ const create = async ({ displayName, email, password, image }) => {
     };
   }
 
-const newUser = await Users.create({ displayName, email, password, image });
+const user = await Users.create({ displayName, email, password, image });
 
 const jwtConfig = {
   expiresIn: '1h',
   algorithm: 'HS256',
 };
 
-const token = jwt.sign({ data: newUser.email }, secret, jwtConfig);
+const token = jwt.sign({ data: user }, secret, jwtConfig);
 return token;
 };
 

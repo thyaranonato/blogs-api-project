@@ -19,7 +19,7 @@ const login = async ({ email, password }) => {
     algorithm: 'HS256',
   };
 
-  const token = jwt.sign({ data: user.email }, process.env.JWT_SECRET, jwtConfig);
+  const token = jwt.sign({ data: user }, process.env.JWT_SECRET, jwtConfig);
   return token;
 };
 
