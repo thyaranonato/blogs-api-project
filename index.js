@@ -19,6 +19,7 @@ app.get('/', (request, response) => {
 
 app.post('/user', userValidation, userController.createUser);
 app.get('/user', tokenValidation, userController.getAllUsers);
+app.get('/user/:id', tokenValidation, userController.getUserById);
 
 app.post('/login', loginValidation, loginController.login);
 
