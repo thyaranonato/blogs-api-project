@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const { findByEmail } = require('../services/userService');
 
 const userValidation = (req, res, next) => {
   const { error } = Joi.object({
@@ -15,17 +14,6 @@ const userValidation = (req, res, next) => {
   next();
 };
 
-const emailExistsValidation = async (req, res, next) => {
-  const { email } = req.body;
-  const emailExists = await findByEmail(email);
-
-  if (emailExists) {
-    return res.status(409).json({ message: 'User already registered' });
-  }
-  next();
-};
-
 module.exports = {
   userValidation,
-  emailExistsValidation,
 };
