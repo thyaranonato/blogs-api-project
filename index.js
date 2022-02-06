@@ -6,6 +6,7 @@ const userController = require('./controllers/userController');
 const loginController = require('./controllers/loginController');
 const { userValidation } = require('./middlewares/userValidation');
 const { loginValidation } = require('./middlewares/loginValidation');
+const { tokenValidation } = require('./middlewares/validateJWT');
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.get('/', (request, response) => {
 });
 
 app.post('/user', userValidation, userController.createUser);
+app.get('/user', tokenValidation, userController.getAllUsers);
+
 app.post('/login', loginValidation, loginController.login);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
