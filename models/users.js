@@ -7,7 +7,6 @@ const Users = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
   }, { timestamps: false }); // timestamps false, porque exclui os campos de criação e atualização quando criei migrations.
 
-  // foreignKey que representa o user na tabela posts vai ser userId
   users.associate = (models) => {
     users.hasMany(models.BlogPosts, { foreignKey: 'userId', as: 'posts' });
   };
