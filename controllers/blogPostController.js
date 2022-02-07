@@ -15,6 +15,18 @@ const create = async (req, res) => {
   }
 };
 
+const getAll = async (_req, res) => {
+  try {
+    const blogPosts = await blogPostService.getAll();
+
+    return res.status(200).json(blogPosts);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).json({ message: 'Algo deu errado' });
+  }
+};
+
 module.exports = {
   create,
+  getAll,
 };
