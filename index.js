@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 
 const userController = require('./controllers/userController');
 const loginController = require('./controllers/loginController');
+const categoryController = require('./controllers/categoryController');
 const { userValidation } = require('./middlewares/userValidation');
 const { loginValidation } = require('./middlewares/loginValidation');
 const { tokenValidation } = require('./middlewares/validateJWT');
+const { categoryValidation } = require('./middlewares/categoryValidation');
 
 const app = express();
 
@@ -22,5 +24,7 @@ app.get('/user', tokenValidation, userController.getAllUsers);
 app.get('/user/:id', tokenValidation, userController.getUserById);
 
 app.post('/login', loginValidation, loginController.login);
+
+app.post('/categories', tokenValidation, categoryValidation, categoryController.createCategory);
 
 app.listen(3000, () => console.log('ouvindo porta 3000!'));
