@@ -26,7 +26,22 @@ const getAll = async (_req, res) => {
   }
 };
 
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const blogPosts = await blogPostService.getById(id);
+
+    if (blogPosts.message) return res.status(blogPosts.code).json(blogPosts.message);
+
+    return res.status(200).json(blogPosts);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).json({ message: 'Algo deu errado' });
+  }
+};
+
 module.exports = {
   create,
   getAll,
+  getById,
 };
