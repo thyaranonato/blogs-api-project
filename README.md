@@ -8,7 +8,7 @@ Foi arquitetada e desenvolvida uma API de um CRUD posts de blog (com Sequelize).
 
 # Tecnologias usadas
 
-O projeto foi desenvolvido usando: NodeJS, Express, Sequelize e Insomnia.
+O projeto foi desenvolvido usando: NodeJS, Express, Sequelize e Insomnia e Joi (validações).
 
 ---
 
